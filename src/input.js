@@ -6,3 +6,4 @@ export default class InputHandler {
 		});
     }
 }
+1

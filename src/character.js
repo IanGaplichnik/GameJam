@@ -13,3 +13,4 @@ export default class Character {
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 }
+1

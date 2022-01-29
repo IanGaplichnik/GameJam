@@ -20,3 +20,4 @@ function gameLoop() {
 	ctx.clearRect(0, 0, 400, 900);
 	requestAnimationFrame(gameLoop);
 }
+1
