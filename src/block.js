@@ -1,14 +1,14 @@
 class BlockUP {
 	constructor(gameWidth, gameHeight) {
 		this.width = 30;
-		this.height = 30;
+		this.height = Math.floor(Math.random() * 100) + 14;
 
 		this.speed = -7;
 		this.markedForDeletion = false;
 
 		this.position = {
 			x: gameWidth,
-			y: gameHeight/2 - this.height + 2,
+			y: gameHeight/2 - this.height + 4,
 	};
 }
 

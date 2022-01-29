@@ -10,7 +10,7 @@ let block = new BlockUP(GAME_WIDTH, GAME_HEIGHT);
 //let blockb = new BlockBELOW(GAME_WIDTH, GAME_HEIGHT);
 obstacles.push(block);
 let character = new Character(GAME_WIDTH, GAME_HEIGHT);
-new InputHandler(character);
+let input = new InputHandler(character);
 
 let lastTime = 0;
 let spawnTime = 0;
@@ -18,8 +18,16 @@ function gameLoop(timestamp) {
 	let deltaTime = timestamp - lastTime;
 	lastTime = timestamp;
 
-
 	ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+
+	//perevorot()
+
+	ctx.fillStyle = 'black';
+	if(!input.state)
+		ctx.fillRect(0, GAME_HEIGHT/2, GAME_WIDTH, GAME_HEIGHT/2);
+	else
+		ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT/2);
+
 	if (timestamp - spawnTime >= 1000) {
 		spawnTime = timestamp;
 		obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));

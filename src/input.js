@@ -1,6 +1,7 @@
 class InputHandler {
 
     constructor(character) {
+		this.state = 0;
 		document.addEventListener("keydown", (event) => {
 			switch (event.keyCode) {
 				case 38:
@@ -10,7 +11,17 @@ class InputHandler {
 			}
 		});
 		
-		// document.addEventListener("keyup", (event) => {
+		document.addEventListener("keydown", (event) => {
+			switch (event.keyCode) {
+				case 40:
+					if (!this.state)
+						this.state++;
+					else
+						this.state = 0;
+					break ;
+			}
+		});
+		//document.addEventListener("keyup", (event) => {
 		// 	switch (event.keyCode) {
 		// 		case 38:
 		// 			if (!character.jumpDown())	
