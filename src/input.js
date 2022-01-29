@@ -10,13 +10,13 @@ export default class InputHandler {
 			}
 		});
 		
-		document.addEventListener("keyup", (event) => {
-			switch (event.keyCode) {
-				case 38:
-					if (!character.jumpDown())	
-						character.jumpDown();
-					break ;
-			}
-    	});
+		// document.addEventListener("keyup", (event) => {
+		// 	switch (event.keyCode) {
+		// 		case 38:
+		// 			if (!character.jumpDown())	
+		// 				character.jumpDown();
+		// 			break ;
+		// 	}
+    	// });
 	}
 }
