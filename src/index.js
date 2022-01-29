@@ -8,7 +8,7 @@ const GAME_HEIGHT = 400;
 
 ctx.clearRect(0, 0, 400, 900);
 
-ctx.fillRect(50, 100, 50, 100);
+ctx.fillRect(50, 50, 50, 100);
 
 let block = new Block(GAME_WIDTH, GAME_HEIGHT);
 
