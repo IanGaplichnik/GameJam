@@ -1,4 +1,4 @@
-function detectCollision(character, gameObject) {
+function detectCollision(character, gameObject, gamestate) {
     let bottomOfcharacter = character.position.y + character.height;
     let rightOfcharacter = character.position.x + character.width;
     let leftOfcharacter = character.position.x;
@@ -16,7 +16,7 @@ function detectCollision(character, gameObject) {
       rightOfcharacter >= leftSideOfObject &&
       leftOfcharacter <= rightSideOfObject
     ) {
-      console.log("detct");
+      gamestate.value = 1;
    /* } else {
       return false;
       */
