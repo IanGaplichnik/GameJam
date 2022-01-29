@@ -1,15 +1,23 @@
-import Block from "../src/block.js";
+import BlockUP from "../src/block.js";
 
 let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext('2d');
 
 const GAME_WIDTH = 900;
-const GAME_HEIGHT = 400;
+const GAME_HEIGHT = 600;
 
-ctx.clearRect(0, 0, 400, 900);
+let block = new BlockUP(GAME_WIDTH, GAME_HEIGHT);
 
-ctx.fillRect(50, 50, 50, 100);
+let lastTime = 0;
+function gameLoop(timestamp) {
+  let deltaTime = timestamp - lastTime;
+  lastTime = timestamp;
 
-let block = new Block(GAME_WIDTH, GAME_HEIGHT);
+  ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+  block.update(deltaTime);
+  block.draw(ctx);
 
-block.draw(ctx);
+  requestAnimationFrame(gameLoop);
+}
+
+requestAnimationFrame(gameLoop);
