@@ -1,15 +1,22 @@
 import Block from "../src/block.js";
+import Character from "../src/character.js";
+import InputHandler from "../src/input.js";
+
+const GAME_WIDTH = 900;
+const GAME_HEIGHT = 600;
 
 let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext('2d');
-
-const GAME_WIDTH = 900;
-const GAME_HEIGHT = 400;
-
-ctx.clearRect(0, 0, 400, 900);
-
-ctx.fillRect(50, 100, 50, 100);
-
+let lastTime = 0;
 let block = new Block(GAME_WIDTH, GAME_HEIGHT);
+let character = new Character(GAME_WIDTH, GAME_HEIGHT);
+new InputHandler();
 
-block.draw(ctx);
+function gameLoop() {
+	let deltaTime = timestamp - lastTime;
+	lastTime = timestamp;
+	block.draw(ctx);
+	character.draw(ctx);
+	ctx.clearRect(0, 0, 400, 900);
+	requestAnimationFrame(gameLoop);
+}
