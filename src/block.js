@@ -4,8 +4,8 @@ export default class Block {
         this.height = 50;
 
         this.position = {
-            x: gameWidth - this.width,
-            y: gameHeight/2 + this.height,
+            x: 200,
+            y: 300,
     };
 }
 
