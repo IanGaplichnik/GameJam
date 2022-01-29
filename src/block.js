@@ -5,7 +5,7 @@ export default class Block {
 
         this.position = {
             x: gameWidth - this.width,
-            y: gameHeight/2 + this.height,
+            y: gameHeight/2 - this.height,
     };
 }
 
@@ -13,4 +13,3 @@ export default class Block {
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 }
-1

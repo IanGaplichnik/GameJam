@@ -10,14 +10,22 @@ let ctx = canvas.getContext('2d');
 let lastTime = 0;
 let block = new Block(GAME_WIDTH, GAME_HEIGHT);
 let character = new Character(GAME_WIDTH, GAME_HEIGHT);
-new InputHandler();
+new InputHandler(character);
 
-function gameLoop() {
+
+block.draw(ctx);
+character.draw(ctx);
+
+function gameLoop(timestamp) {
 	let deltaTime = timestamp - lastTime;
 	lastTime = timestamp;
+	
+	ctx.clearRect(0, 0, 900, 600);
 	block.draw(ctx);
+	character.update(deltaTime);
 	character.draw(ctx);
-	ctx.clearRect(0, 0, 400, 900);
+	
 	requestAnimationFrame(gameLoop);
 }
-1
+
+gameLoop();
