@@ -18,17 +18,8 @@ class InputHandler {
 						this.state++;
 					else
 						this.state = 0;
-					// obstacles.forEach(object => object.reverse(state));
 					break ;
 			}
 		});
-		//document.addEventListener("keyup", (event) => {
-		// 	switch (event.keyCode) {
-		// 		case 38:
-		// 			if (!character.jumpDown())	
-		// 				character.jumpDown();
-		// 			break ;
-		// 	}
-    	// });
 	}
 }

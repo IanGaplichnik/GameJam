@@ -11,7 +11,7 @@ class Character {
             x: 30,
             y: gameHeight/2 - this.height,
         };
-        this.sprite = new Sprite(this.position.x, this.position.y);
+        this.sprite = new Sprite(this.position.x, this.position.y, this.width, this.height);
 }
 
     jumpUp() {
@@ -24,6 +24,7 @@ class Character {
     // }
 
     draw(ctx){
+        ctx.fillStyle = 'green';
         // ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
         this.sprite.draw(ctx);
     }

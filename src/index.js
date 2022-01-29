@@ -24,9 +24,15 @@ function gameLoop(timestamp) {
 
 	ctx.fillStyle = 'black';
 	if(!input.state)
+	{
 		ctx.fillRect(0, GAME_HEIGHT/2, GAME_WIDTH, GAME_HEIGHT/2);
+		character.sprite.image = document.getElementById("sprite_black");
+	}
 	else
+	{
 		ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT/2);
+		character.sprite.image = document.getElementById("sprite_white");
+	}
 
 	if (timestamp - spawnTime >= 1000) {
 		spawnTime = timestamp;
@@ -36,14 +42,6 @@ function gameLoop(timestamp) {
 	obstacles = obstacles.filter(block => !block.markedForDeletion);
 	obstacles.forEach(object => object.draw(ctx));
 
-
-
-	/*
-	block.draw(ctx);
-
-	blockb.update(deltaTime);
-	blockb.draw(ctx);
-*/
 	character.update(deltaTime);
 	character.draw(ctx);
 
