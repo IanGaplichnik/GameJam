@@ -1,4 +1,4 @@
-export default class BlockUP {
+class BlockUP {
 	constructor(gameWidth, gameHeight) {
 		this.width = 30;
 		this.height = 30;

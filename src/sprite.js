@@ -1,11 +1,10 @@
-export default class Sprite {
+class Sprite {
 	constructor(x, y){
 		this.x = x;
 		this.y = y;
 		this.sprite_width = 500;
 		this.sprite_height = 500;
-		this.image = new Image();
-		this.image.src = '/assets/images/run_black.png';
+		this.image = document.getElementById("sprite");
 		this.frame = 0;
 		this.time = 0;
 	}

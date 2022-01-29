@@ -1,4 +1,4 @@
-export default class InputHandler {
+class InputHandler {
 
     constructor(character) {
 		document.addEventListener("keydown", (event) => {

@@ -1,6 +1,4 @@
-import Sprite from "../src/sprite.js"
-
-export default class Character {
+class Character {
     constructor(gameWidth, gameHeight) {
         this.gameWidth = gameWidth;
         this.gameHeight = gameHeight;

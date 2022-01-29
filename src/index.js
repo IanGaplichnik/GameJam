@@ -1,6 +1,4 @@
-import BlockUP from "../src/block.js";
-import Character from "../src/character.js";
-import InputHandler from "../src/input.js";
+
 
 let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext('2d');
