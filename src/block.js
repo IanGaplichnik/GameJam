@@ -21,9 +21,9 @@ class BlockUP {
 	};
 }
 
-	speedup(timestamp){
+	/*speedup(timestamp){
 		this.speed -= 0.03;
-	}
+	}*/
 	stop() {
 		this.speed = 0;
 	}

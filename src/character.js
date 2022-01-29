@@ -25,7 +25,7 @@ class Character {
 
     draw(ctx){
         ctx.fillStyle = 'green';
-        // ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+       // ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
         this.sprite.draw(ctx);
     }
 
