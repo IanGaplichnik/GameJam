@@ -1,14 +1,23 @@
 class BlockUP {
 	constructor(gameWidth, gameHeight) {
-		this.width = 30;
+		this.gameHeight = gameHeight;
+		this.gameWidth = gameWidth;
+		this.state = Math.round(Math.random());
+		this.width = 50;
 		this.height = Math.floor(Math.random() * 100) + 14;
-
+		if (this.state) {
+			this.fillStyle = 'black';
+			this.y = gameHeight/2 - this.height + 4;
+		}
+		else {
+			this.fillStyle = 'white';
+			this.y = this.gameHeight/2 - 4;
+		} 
 		this.speed = -7;
 		this.markedForDeletion = false;
-
 		this.position = {
 			x: gameWidth,
-			y: gameHeight/2 - this.height + 4,
+			y: this.y,
 	};
 }
 
@@ -16,13 +25,40 @@ class BlockUP {
 		this.speed = 0;
 	}
 
+	reverse(state) {
+		if (state == 0)
+		{
+			alert("0");
+			this.fillStyle = 'green';
+			this.position.y = gameHeight/2 - this.height + 4;
+		}
+		else
+		{
+			this.fillStyle = 'blue';
+			this.position.y = gameHeight/2 - 4;
+		}
+	}
 
 	draw(ctx){
-		ctx.fillStyle = 'green';
+		ctx.fillStyle = this.fillStyle;
 		ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
 	}
 
-	update(deltaTime) {
+	update(deltaTime, state) {
+		if (!state)
+		{
+			if (this.state)
+				this.position.y = this.gameHeight/2 - this.height + 4;
+			else
+				this.position.y = this.gameHeight/2 - 4;
+		}
+		else
+		{
+			if (this.state)
+				this.position.y = this.gameHeight/2 - 4;
+			else
+				this.position.y = this.gameHeight/2 - this.height + 4;
+		}
 		this.position.x += this.speed;
 
 		if (this.position.x <= - this.width) this.markedForDeletion = true;

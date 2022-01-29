@@ -1,6 +1,6 @@
 class InputHandler {
 
-    constructor(character) {
+    constructor(character, obstacles) {
 		this.state = 0;
 		document.addEventListener("keydown", (event) => {
 			switch (event.keyCode) {
@@ -18,6 +18,7 @@ class InputHandler {
 						this.state++;
 					else
 						this.state = 0;
+					// obstacles.forEach(object => object.reverse(state));
 					break ;
 			}
 		});

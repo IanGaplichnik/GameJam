@@ -10,7 +10,7 @@ let block = new BlockUP(GAME_WIDTH, GAME_HEIGHT);
 //let blockb = new BlockBELOW(GAME_WIDTH, GAME_HEIGHT);
 obstacles.push(block);
 let character = new Character(GAME_WIDTH, GAME_HEIGHT);
-let input = new InputHandler(character);
+let input = new InputHandler(character, obstacles);
 
 let lastTime = 0;
 let spawnTime = 0;
@@ -32,7 +32,7 @@ function gameLoop(timestamp) {
 		spawnTime = timestamp;
 		obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
 	}
-	obstacles.forEach(object => object.update(deltaTime));
+	obstacles.forEach(object => object.update(deltaTime, input.state));
 	obstacles = obstacles.filter(block => !block.markedForDeletion);
 	obstacles.forEach(object => object.draw(ctx));
 
