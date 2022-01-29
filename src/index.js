@@ -14,17 +14,17 @@ new InputHandler(character);
 
 let lastTime = 0;
 function gameLoop(timestamp) {
-  let deltaTime = timestamp - lastTime;
-  lastTime = timestamp;
+	let deltaTime = timestamp - lastTime;
+	lastTime = timestamp;
 
-  ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-  block.update(deltaTime);
-  block.draw(ctx);
+	ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+	block.update(deltaTime);
+	block.draw(ctx);
 
-  character.update(deltaTime);
+	character.update(deltaTime);
 	character.draw(ctx);
 
-  requestAnimationFrame(gameLoop);
+	requestAnimationFrame(gameLoop);
 }
 
 requestAnimationFrame(gameLoop);
