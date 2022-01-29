@@ -13,7 +13,7 @@ class BlockUP {
 			this.fillStyle = 'white';
 			this.y = this.gameHeight/2 - 4;
 		} 
-		this.speed = -7;
+		this.speed = -4;
 		this.markedForDeletion = false;
 		this.position = {
 			x: gameWidth,
@@ -21,6 +21,9 @@ class BlockUP {
 	};
 }
 
+	speedup(timestamp){
+		this.speed -= 0.03;
+	}
 	stop() {
 		this.speed = 0;
 	}

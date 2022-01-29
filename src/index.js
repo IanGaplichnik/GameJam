@@ -33,13 +33,14 @@ function gameLoop(timestamp) {
 		ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT/2);
 		character.sprite.image = document.getElementById("sprite_white");
 	}
-
-	if (timestamp - spawnTime >= 1000) {
+	let deltaSTime = timestamp - spawnTime;
+	if (deltaSTime >= 700 && deltaSTime <= 1100 && Math.round(Math.random())===1) {
 		spawnTime = timestamp;
 		obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
 	}
 	obstacles.forEach(object => object.update(deltaTime, input.state));
 	obstacles = obstacles.filter(block => !block.markedForDeletion);
+	obstacles.forEach(object => object.speedup(timestamp));
 	obstacles.forEach(object => object.draw(ctx));
 
 	character.update(deltaTime);
