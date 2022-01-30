@@ -77,6 +77,7 @@ function gameLoop(timestamp) {
 	}
 
 	let deltaSTime = timestamp - spawnTime;
+	console.log(deltaSTime);
 	if (blockspeed > -9.5){
 		if (deltaSTime >= (1000 + blockspeed*10) && deltaSTime <= (1500 + blockspeed * 10)  && Math.round(Math.random())===1) {
 			spawnTime = timestamp;
@@ -104,7 +105,7 @@ function gameLoop(timestamp) {
 	background.forEach(object => object.draw(ctx, input.state));
 	
 	if (blockspeed < -9.5){
-		if (deltaSTime >= (1000 + blockspeed * 20) && deltaSTime <= (1500 + blockspeed * 20)  && Math.round(Math.random())===1) {
+		if (deltaSTime >= (1000 + blockspeed * 20)  && Math.round(Math.random())===1) {
 			spawnTime = timestamp;
 			obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
 		}
@@ -112,7 +113,7 @@ function gameLoop(timestamp) {
 	if (blockspeed < -13){
 		if ((1000 + blockspeed * 10) > 20)
 		{
-			if (deltaSTime >= (1000 + blockspeed * 10) && deltaSTime <= (1500 + blockspeed * 10)  && Math.round(Math.random())===1) 
+			if (deltaSTime >= (1000 + blockspeed * 10)  && Math.round(Math.random())===1) 
 			{
 				spawnTime = timestamp;
 				obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
@@ -145,7 +146,10 @@ function gameBanner() {
     // ctx.fill();
 	//ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 	if (banner == 0)
+	{
+		spawnTime = 0;
 		requestAnimationFrame(gameLoop);
+	}
 	else 
 	requestAnimationFrame(gameBanner);
 	
