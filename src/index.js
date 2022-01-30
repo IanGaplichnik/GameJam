@@ -109,15 +109,21 @@ function gameLoop(timestamp) {
 	requestAnimationFrame(gameLoop);
 }
 
+let start = document.getElementById("start");
+
 function gameBanner() {
-	ctx.rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-    ctx.fillStyle = "rgba(0,0,0,1)";
-    ctx.fill();
+	ctx.fillStyle = "rgba(0,0,0,1)";
+	ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+	ctx.drawImage(start, 0, 0,
+		2000, 1000, 0, 0,
+		GAME_WIDTH, GAME_HEIGHT);
+    // ctx.fillStyle = "rgba(0,0,0,1)";
+    // ctx.fill();
 	//ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 	if (banner == 0)
 		requestAnimationFrame(gameLoop);
 	else 
-		gameBanner();
+	requestAnimationFrame(gameBanner);
 	
 }
-requestAnimationFrame(gameLoop);
+requestAnimationFrame(gameBanner);
