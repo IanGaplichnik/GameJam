@@ -22,6 +22,7 @@ let coin = new COIN(GAME_WIDTH, GAME_HEIGHT);
 let obstacles = [];
 obstacles.push(block);
 
+let coinscol = 0;
 let coins = [];
 coins.push(coin);
 
@@ -44,7 +45,7 @@ background.forEach(object => object.setup());
 function gameLoop(timestamp) {
 	let deltaTime = timestamp - lastTime;
 	lastTime = timestamp;
-	score += 0.03;
+	score = coinscol;
 	obstacles.forEach(object => detectCollision(character, object, gamestate));
 	if (gamestate.value === 1)
 	{
@@ -58,7 +59,7 @@ function gameLoop(timestamp) {
         ctx.fillText("GAME OVER", GAME_WIDTH / 2, GAME_HEIGHT/2);
 		return;
 	}
-	
+
 	ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 	ctx.fillStyle = 'black';
 	if(!input.state)
@@ -88,7 +89,9 @@ function gameLoop(timestamp) {
 	{
 		coins.push(new COIN(GAME_WIDTH, GAME_HEIGHT));
 	}
+
 	coins.forEach(object => object.update(blockspeed));
+	coins.forEach(object => coinCollision(character, object));
 	coins = coins.filter(block => !block.markedForDeletion);
 	coins.forEach(object => object.draw(ctx, input.state));
 

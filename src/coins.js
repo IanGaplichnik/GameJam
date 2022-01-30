@@ -8,7 +8,7 @@ class COIN {
 		this.state = Math.round(Math.random());
 		this.width = 40
 		this.height = 40
-		if (this.state) {
+		/*if (this.state) {
 			this.fillStyle = 'red';
 			//this.image = document.getElementById("block_black");
 			
@@ -16,7 +16,7 @@ class COIN {
 		else {
 			this.fillStyle = 'white';
 			//this.image = document.getElementById("block_white");
-		} 
+		} */
 		//this.speed = blockspeed;
 		//this.speed = -9;
 		this.markedForDeletion = false;
