@@ -77,7 +77,6 @@ function gameLoop(timestamp) {
 	}
 
 	let deltaSTime = timestamp - spawnTime;
-	console.log(deltaSTime);
 	if (blockspeed > -9.5){
 		if (deltaSTime >= (1000 + blockspeed*10) && deltaSTime <= (1500 + blockspeed * 10)  && Math.round(Math.random())===1) {
 			spawnTime = timestamp;
