@@ -54,10 +54,12 @@ function gameLoop(timestamp) {
         ctx.fillStyle = "rgba(0,0,0,1)";
         ctx.fill();
   
-        ctx.font = "30px Arial";
+        ctx.font = "40px Arial";
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
         ctx.fillText("GAME OVER", GAME_WIDTH / 2, GAME_HEIGHT/2);
+		ctx.font = "20px Arial";
+		ctx.fillText("YOU COLLECTED " + score + " HIVE COINS", GAME_WIDTH/2, GAME_HEIGHT - 200);
 		return;
 	}
 
