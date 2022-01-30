@@ -1,7 +1,8 @@
 class InputHandler {
 
-    constructor(character, obstacles) {
+    constructor(character) {
 		this.state = 0;
+		this.reset = 0;
 		document.addEventListener("keydown", (event) => {
 			switch (event.keyCode) {
 				case 38:
@@ -18,6 +19,20 @@ class InputHandler {
 						this.state++;
 					else
 						this.state = 0;
+					break ;
+			}
+		});
+	
+		document.addEventListener("keydown", (event) => {
+			switch (event.keyCode) {
+				case 32:
+					if (gamestate.value === 1)
+					{
+						this.reset = 1;
+						gameLoop();
+					}
+					else
+						this.reset = 0;
 					break ;
 			}
 		});
