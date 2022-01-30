@@ -8,21 +8,24 @@ class BackgroundImage {
 		if (sprite === "day_black") {
 			this.y = Math.floor(Math.random() * (gameHeight/2 - this.size - 100)) + 30;
 			this.image = document.getElementById("day_black");
+			this.speed = -2;
 		}
 		else if (sprite === "night_white") {
 			this.y = Math.floor(Math.random() * (gameHeight/2 - this.size - 100)) + 50;
 			this.image = document.getElementById("night_white");
+			this.speed = -2;
 		}
 		else if (sprite === "day_white"){
 			this.y = Math.floor(Math.random() * (gameHeight/2  - this.size - 50)) + (gameHeight/2) + 30;
 			this.image = document.getElementById("day_white");
+			this.speed = -7;
 		}
 		else {
 			this.y = Math.floor(Math.random() * (gameHeight/2  - this.size - 50)) + (gameHeight/2) + 30;
 			this.image = document.getElementById("night_black");
+			this.speed = -7;
 		}
 		this.frame = Math.floor(Math.random() * 15);
-		this.speed = -2;
 		this.markedForDeletion = false;
 	}
 

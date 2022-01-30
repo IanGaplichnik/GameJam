@@ -10,7 +10,12 @@ class Background {
 	update()
 	{
 		let push = Math.random();
-		if (this.time % 100 == 0 && push > 0.3)
+		let modifier = 0;
+		if (this.sprite == "day_black" || this.sprite == "night_white")
+			modifier = 100;
+		else
+			modifier = 30;
+		if (this.time % modifier == 0 && push > 0.3)
 			this.images.push(new BackgroundImage(this.gameWidth, this.gameHeight, this.sprite));
 		this.images.forEach(object => object.update());
 		this.images = this.images.filter(object => !object.markedForDeletion);
