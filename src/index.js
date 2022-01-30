@@ -17,15 +17,20 @@ const GAME_HEIGHT = 600;
 let gamestate = {Value: 0};
 
 let block = new BlockUP(GAME_WIDTH, GAME_HEIGHT);
+let coin = new COIN(GAME_WIDTH, GAME_HEIGHT);
 
 let obstacles = [];
 obstacles.push(block);
+
+let coins = [];
+coins.push(coin);
 
 let character = new Character(GAME_WIDTH, GAME_HEIGHT);
 let input = new InputHandler(character, obstacles);
 
 let lastTime = 0;
 let spawnTime = 0;
+let cointime = 0;
 
 let background = [];
 background.push(new Background(GAME_WIDTH, GAME_HEIGHT, "day_black"));
@@ -75,6 +80,20 @@ function gameLoop(timestamp) {
 		}
 	}
 	
+
+	let push = Math.random();
+	let modifier = 40;
+	cointime++;
+	if (cointime % modifier == 0 && push > 0.3)
+	{
+		coins.push(new COIN(GAME_WIDTH, GAME_HEIGHT));
+	}
+	coins.forEach(object => object.update(blockspeed));
+	coins = coins.filter(block => !block.markedForDeletion);
+	coins.forEach(object => object.draw(ctx, input.state));
+
+
+
 	background.forEach(object => object.update(blockspeed));
 	background.forEach(object => object.draw(ctx, input.state));
 	
