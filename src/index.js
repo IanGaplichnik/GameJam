@@ -21,7 +21,7 @@ let block = new BlockUP(GAME_WIDTH, GAME_HEIGHT);
 let coin = new COIN(GAME_WIDTH, GAME_HEIGHT);
 
 let obstacles = [];
-obstacles.push(block);
+// obstacles.push(block);
 
 let coinscol = 0;
 let coins = [];
