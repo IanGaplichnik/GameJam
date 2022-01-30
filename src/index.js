@@ -40,20 +40,19 @@ function gameLoop(timestamp) {
 	let deltaTime = timestamp - lastTime;
 	lastTime = timestamp;
 	score += 0.03;
-	console.log(score);
 	obstacles.forEach(object => detectCollision(character, object, gamestate));
-	// if (gamestate.value === 1)
-	// {
-	// 	ctx.rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-    //     ctx.fillStyle = "rgba(0,0,0,1)";
-    //     ctx.fill();
+	if (gamestate.value === 1)
+	{
+		ctx.rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+        ctx.fillStyle = "rgba(0,0,0,1)";
+        ctx.fill();
   
-    //     ctx.font = "30px Arial";
-    //     ctx.fillStyle = "white";
-    //     ctx.textAlign = "center";
-    //     ctx.fillText("GAME OVER", GAME_WIDTH / 2, GAME_HEIGHT/2);
-	// 	return;
-	// }
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText("GAME OVER", GAME_WIDTH / 2, GAME_HEIGHT/2);
+		return;
+	}
 	
 	ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 	ctx.fillStyle = 'black';
@@ -76,7 +75,7 @@ function gameLoop(timestamp) {
 		}
 	}
 	
-	background.forEach(object => object.update());
+	background.forEach(object => object.update(blockspeed));
 	background.forEach(object => object.draw(ctx, input.state));
 	
 	if (blockspeed < -9.5){

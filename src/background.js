@@ -15,17 +15,17 @@ class Background {
 		this.images[1].x = this.gameWidth/3 * 2;
 	}
 
-	update()
+	update(blockspeed)
 	{
 		let push = Math.random();
 		let modifier = 0;
 		if (this.sprite == "day_black" || this.sprite == "night_white")
 			modifier = 100;
 		else
-			modifier = 30;
+			modifier = 40;
 		if (this.time % modifier == 0 && push > 0.3)
 			this.images.push(new BackgroundImage(this.gameWidth, this.gameHeight, this.sprite));
-		this.images.forEach(object => object.update());
+		this.images.forEach(object => object.update(blockspeed));
 		this.images = this.images.filter(object => !object.markedForDeletion);
 		this.time++;
 	}

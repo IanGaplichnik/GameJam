@@ -8,7 +8,7 @@ class Character {
         this.maxSpeed = 15;
         this.speed = 0;
         this.position = {
-            x: 30,
+            x: 100,
             y: gameHeight/2 - this.height,
         };
         this.sprite = new Sprite(this.position.x, this.position.y, this.width, this.height);
