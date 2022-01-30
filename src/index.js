@@ -3,7 +3,8 @@
 let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext('2d');
 
-const GAME_WIDTH = 900;
+let blockspeed = -7;
+const GAME_WIDTH = 1500;
 const GAME_HEIGHT = 600;
 /*const GAMESTATE = {
     PAUSED: 0,
@@ -25,7 +26,6 @@ let input = new InputHandler(character, obstacles);
 
 let lastTime = 0;
 let spawnTime = 0;
-
 
 function gameLoop(timestamp) {
 	let deltaTime = timestamp - lastTime;
@@ -57,16 +57,57 @@ function gameLoop(timestamp) {
 		ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT/2);
 		character.sprite.image = document.getElementById("sprite_white");
 	}
-	
-	
+
 	let deltaSTime = timestamp - spawnTime;
-	if (deltaSTime >= 1000 && deltaSTime <= 1500 && Math.round(Math.random())===1) {
-		spawnTime = timestamp;
-		obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
+	if (blockspeed > -9.5){
+		if (deltaSTime >= (1000 + blockspeed*10) && deltaSTime <= (1500 + blockspeed * 10)  && Math.round(Math.random())===1) {
+			spawnTime = timestamp;
+			console.log(1000 + blockspeed * 30);
+			obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
+		}
 	}
-	
-	
+	if (blockspeed < -9.5){
+		if (deltaSTime >= (1000 + blockspeed * 20) && deltaSTime <= (1500 + blockspeed * 20)  && Math.round(Math.random())===1) {
+			spawnTime = timestamp;
+			console.log(1000 + blockspeed * 30);
+			obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
+		}
+	}
+	if (blockspeed < -13){
+		if ((1000 + blockspeed * 10) > 20)
+		{
+			if (deltaSTime >= (1000 + blockspeed * 10) && deltaSTime <= (1500 + blockspeed * 10)  && Math.round(Math.random())===1) 
+			{
+				spawnTime = timestamp;
+				console.log(1000 + blockspeed * 30);
+				obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
+			}
+		}
+	}
+	/*
+	if (blockspeed > 8.5 && blockspeed < 9.5){
+		if (deltaSTime >= 700 && deltaSTime <= 1000 && Math.round(Math.random())===1) {
+			spawnTime = timestamp;
+			obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
+		}
+	}
+	if (blockspeed > 9.5 && blockspeed < 10.5){
+		if (deltaSTime >= 300 && deltaSTime <= 400 && Math.round(Math.random())===1) {
+			spawnTime = timestamp;
+			obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
+		}
+	}
+	if (blockspeed > 10.5 && blockspeed < 12){
+		if (deltaSTime >= 100 && deltaSTime <= 300 && Math.round(Math.random())===1) {
+			spawnTime = timestamp;
+			obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
+		}
+	}
+	*/
+
+	speedup();
 	obstacles.forEach(object => object.update(deltaTime, input.state));
+	//obstacles.forEach(object => object.speedup(timestamp));
 	obstacles = obstacles.filter(block => !block.markedForDeletion);
 	
 	//obstacles.forEach(object => object.speedup(timestamp));

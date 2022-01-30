@@ -3,8 +3,8 @@ class BlockUP {
 		this.gameHeight = gameHeight;
 		this.gameWidth = gameWidth;
 		this.state = Math.round(Math.random());
-		this.width = 50;
-		this.height = Math.floor(Math.random() * 100) + 14;
+		this.width = 60;
+		this.height = Math.floor(Math.random() * 200) + 20;
 		if (this.state) {
 			this.fillStyle = 'black';
 			this.y = gameHeight/2 - this.height + 4;
@@ -13,17 +13,14 @@ class BlockUP {
 			this.fillStyle = 'white';
 			this.y = this.gameHeight/2 - 4;
 		} 
-		this.speed = -7;
+		//this.speed = blockspeed;
+		//this.speed = -9;
 		this.markedForDeletion = false;
 		this.position = {
 			x: gameWidth,
 			y: this.y,
-	};
-}
-
-	/*speedup(timestamp){
-		this.speed -= 0.03;
-	}*/
+		};
+	}
 	stop() {
 		this.speed = 0;
 	}
@@ -48,7 +45,9 @@ class BlockUP {
 			else
 				this.position.y = this.gameHeight/2 - this.height + 4;
 		}
-		this.position.x += this.speed;
+		//this.speed = blockspeed;
+		console.log(blockspeed);
+		this.position.x += blockspeed;
 
 		if (this.position.x <= - this.width) this.markedForDeletion = true;
 	}
