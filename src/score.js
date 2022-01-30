@@ -11,5 +11,5 @@ function scoreCount(gameWidth, gameHeight, score, ctx, state) {
 
     ctx.font = "25px Arial";
     ctx.textAlign = "center";
-    ctx.fillText("Your skill " + Math.round(score), gameWidth/2, gameHeight/10);
+    ctx.fillText("HIVE COINS: " + score, gameWidth/2, gameHeight/10);
 }
