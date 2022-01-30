@@ -26,24 +26,30 @@ let input = new InputHandler(character, obstacles);
 let lastTime = 0;
 let spawnTime = 0;
 
+let background = [];
+background.push(new Background(GAME_WIDTH, GAME_HEIGHT, "day_black"));
+background.push(new Background(GAME_WIDTH, GAME_HEIGHT, "day_white"));
+background.push(new Background(GAME_WIDTH, GAME_HEIGHT, "night_black"));
+background.push(new Background(GAME_WIDTH, GAME_HEIGHT, "night_white"));
+
 
 function gameLoop(timestamp) {
 	let deltaTime = timestamp - lastTime;
 	lastTime = timestamp;
 
 	obstacles.forEach(object => detectCollision(character, object, gamestate));
-	if (gamestate.value === 1)
-	{
-		ctx.rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-        ctx.fillStyle = "rgba(0,0,0,1)";
-        ctx.fill();
+	// if (gamestate.value === 1)
+	// {
+	// 	ctx.rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+    //     ctx.fillStyle = "rgba(0,0,0,1)";
+    //     ctx.fill();
   
-        ctx.font = "30px Arial";
-        ctx.fillStyle = "white";
-        ctx.textAlign = "center";
-        ctx.fillText("GAME OVER", GAME_WIDTH / 2, GAME_HEIGHT/2);
-		return;
-	}
+    //     ctx.font = "30px Arial";
+    //     ctx.fillStyle = "white";
+    //     ctx.textAlign = "center";
+    //     ctx.fillText("GAME OVER", GAME_WIDTH / 2, GAME_HEIGHT/2);
+	// 	return;
+	// }
 	
 	ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 	ctx.fillStyle = 'black';
@@ -65,6 +71,8 @@ function gameLoop(timestamp) {
 		obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
 	}
 	
+	background.forEach(object => object.update());
+	background.forEach(object => object.draw(ctx, input.state));
 	
 	obstacles.forEach(object => object.update(deltaTime, input.state));
 	obstacles = obstacles.filter(block => !block.markedForDeletion);
