@@ -1,3 +1,4 @@
+let banner = 1;
 
 let score = 0;
 let canvas = document.getElementById("gameScreen");
@@ -105,8 +106,18 @@ function gameLoop(timestamp) {
 	character.update(deltaTime);
 	character.draw(ctx);
 	scoreCount(GAME_WIDTH, GAME_HEIGHT, score, ctx, input.state);
-
 	requestAnimationFrame(gameLoop);
 }
 
+function gameBanner() {
+	ctx.rect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+    ctx.fillStyle = "rgba(0,0,0,1)";
+    ctx.fill();
+	//ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+	if (banner == 0)
+		requestAnimationFrame(gameLoop);
+	else 
+		gameBanner();
+	
+}
 requestAnimationFrame(gameLoop);

@@ -1,7 +1,8 @@
 class InputHandler {
-
-    constructor(character, obstacles) {
+	
+	constructor(character, obstacles) {
 		this.state = 0;
+
 		document.addEventListener("keydown", (event) => {
 			switch (event.keyCode) {
 				case 38:
@@ -21,5 +22,12 @@ class InputHandler {
 					break ;
 			}
 		});
+
+		document.addEventListener("keydown", (event) => {
+			switch(event.keyCode) {
+				case 32:
+					banner = 0;
+			}
+		})
 	}
 }
