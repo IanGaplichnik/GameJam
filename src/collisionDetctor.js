@@ -16,7 +16,7 @@ function detectCollision(character, gameObject, gamestate) {
       rightOfcharacter >= leftSideOfObject &&
       leftOfcharacter <= rightSideOfObject
     ) {
-     // gamestate.value = 1;
+    // gamestate.value = 1;
    /* } else {
       return false;
       */
