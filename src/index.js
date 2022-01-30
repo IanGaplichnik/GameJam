@@ -1,9 +1,10 @@
 
-
+let score = 0;
 let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext('2d');
 
-const GAME_WIDTH = 900;
+let blockspeed = -7;
+const GAME_WIDTH = 1500;
 const GAME_HEIGHT = 600;
 /*const GAMESTATE = {
     PAUSED: 0,
@@ -38,7 +39,8 @@ background.forEach(object => object.setup());
 function gameLoop(timestamp) {
 	let deltaTime = timestamp - lastTime;
 	lastTime = timestamp;
-
+	score += 0.03;
+	console.log(score);
 	obstacles.forEach(object => detectCollision(character, object, gamestate));
 	// if (gamestate.value === 1)
 	// {
@@ -65,18 +67,37 @@ function gameLoop(timestamp) {
 		ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT/2);
 		character.sprite.image = document.getElementById("sprite_white");
 	}
-	
-	
+
 	let deltaSTime = timestamp - spawnTime;
-	if (deltaSTime >= 1000 && deltaSTime <= 1500 && Math.round(Math.random())===1) {
-		spawnTime = timestamp;
-		obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
+	if (blockspeed > -9.5){
+		if (deltaSTime >= (1000 + blockspeed*10) && deltaSTime <= (1500 + blockspeed * 10)  && Math.round(Math.random())===1) {
+			spawnTime = timestamp;
+			obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
+		}
 	}
 	
 	background.forEach(object => object.update());
 	background.forEach(object => object.draw(ctx, input.state));
 	
+	if (blockspeed < -9.5){
+		if (deltaSTime >= (1000 + blockspeed * 20) && deltaSTime <= (1500 + blockspeed * 20)  && Math.round(Math.random())===1) {
+			spawnTime = timestamp;
+			obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
+		}
+	}
+	if (blockspeed < -13){
+		if ((1000 + blockspeed * 10) > 20)
+		{
+			if (deltaSTime >= (1000 + blockspeed * 10) && deltaSTime <= (1500 + blockspeed * 10)  && Math.round(Math.random())===1) 
+			{
+				spawnTime = timestamp;
+				obstacles.push(new BlockUP(GAME_WIDTH, GAME_HEIGHT));
+			}
+		}
+	}
+	speedup();
 	obstacles.forEach(object => object.update(deltaTime, input.state));
+	//obstacles.forEach(object => object.speedup(timestamp));
 	obstacles = obstacles.filter(block => !block.markedForDeletion);
 	
 	//obstacles.forEach(object => object.speedup(timestamp));
@@ -84,7 +105,7 @@ function gameLoop(timestamp) {
 
 	character.update(deltaTime);
 	character.draw(ctx);
-
+	scoreCount(GAME_WIDTH, GAME_HEIGHT, score, ctx, input.state);
 
 	requestAnimationFrame(gameLoop);
 }
