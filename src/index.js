@@ -32,6 +32,8 @@ background.push(new Background(GAME_WIDTH, GAME_HEIGHT, "day_white"));
 background.push(new Background(GAME_WIDTH, GAME_HEIGHT, "night_black"));
 background.push(new Background(GAME_WIDTH, GAME_HEIGHT, "night_white"));
 
+background.forEach(object => object.setup());
+
 
 function gameLoop(timestamp) {
 	let deltaTime = timestamp - lastTime;

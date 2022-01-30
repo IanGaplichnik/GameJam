@@ -7,6 +7,14 @@ class Background {
 		this.time = 0;
 	}
 
+	setup()
+	{
+		this.images.push(new BackgroundImage(this.gameWidth, this.gameHeight, this.sprite));
+		this.images.push(new BackgroundImage(this.gameWidth, this.gameHeight, this.sprite));
+		this.images[0].x = this.gameWidth/3;
+		this.images[1].x = this.gameWidth/3 * 2;
+	}
+
 	update()
 	{
 		let push = Math.random();
