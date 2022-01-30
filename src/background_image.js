@@ -21,8 +21,7 @@ class BackgroundImage {
 			this.y = Math.floor(Math.random() * (gameHeight/2  - this.size - 50)) + (gameHeight/2) + 30;
 			this.image = document.getElementById("night_black");
 		}
-		this.frame = Math.floor(Math.random() * 3);
-		// this.time = 0;
+		this.frame = Math.floor(Math.random() * 15);
 		this.speed = -2;
 		this.markedForDeletion = false;
 	}
