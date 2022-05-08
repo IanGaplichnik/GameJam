@@ -10,3 +10,5 @@ The result game can be run in browser at <a href="https://ladymarengo.github.io/
   
 ## Controls
   Player has access to 2 moves - pressing "Up arrow" will make the character to jump and "Down arrow" will flip the map! If you are facing an obstacle, which is too high to jump over, use the "Down arrow", and the obstacle will be flipped to the other side of the map
+
+  ![demo](demo_nowayout.webp)
